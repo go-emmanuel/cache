@@ -24,7 +24,7 @@ import (
 	"github.com/lunny/nodb/config"
 	"github.com/unknwon/com"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
 )
 
 var (

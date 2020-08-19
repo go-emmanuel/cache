@@ -1,5 +1,6 @@
 // Copyright 2013 Beego Authors
 // Copyright 2014 The Macaron Authors
+// Copyright 2020 the Emmanuel developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License"): you may
 // not use this file except in compliance with the License. You may obtain
@@ -26,8 +27,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/go-emmanuel/emmanuel"
 	"github.com/unknwon/com"
-	"gopkg.in/macaron.v1"
 )
 
 // Item represents a cache item.
@@ -194,7 +195,7 @@ func (c *FileCacher) StartAndGC(opt Options) error {
 	c.interval = opt.Interval
 
 	if !filepath.IsAbs(c.rootPath) {
-		c.rootPath = filepath.Join(macaron.Root, c.rootPath)
+		c.rootPath = filepath.Join(emmanuel.Root, c.rootPath)
 	}
 	c.lock.Unlock()
 

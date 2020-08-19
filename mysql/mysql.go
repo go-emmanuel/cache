@@ -23,7 +23,7 @@ import (
 
 	_ "github.com/go-sql-driver/mysql"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
 )
 
 // MysqlCacher represents a mysql cache adapter implementation.

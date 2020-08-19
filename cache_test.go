@@ -1,4 +1,5 @@
 // Copyright 2014 The Macaron Authors
+// Copyright 2020 the Emmanuel developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License"): you may
 // not use this file except in compliance with the License. You may obtain
@@ -21,8 +22,8 @@ import (
 	"testing"
 	"time"
 
+	"github.com/go-emmanuel/emmanuel"
 	. "github.com/smartystreets/goconvey/convey"
-	"gopkg.in/macaron.v1"
 )
 
 func Test_Version(t *testing.T) {
@@ -33,7 +34,7 @@ func Test_Version(t *testing.T) {
 
 func Test_Cacher(t *testing.T) {
 	Convey("Use cache middleware", t, func() {
-		m := macaron.New()
+		m := emmanuel.New()
 		m.Use(Cacher())
 		m.Get("/", func() {})
 
@@ -49,7 +50,7 @@ func Test_Cacher(t *testing.T) {
 				So(recover(), ShouldNotBeNil)
 			}()
 
-			m := macaron.New()
+			m := emmanuel.New()
 			m.Use(Cacher(Options{
 				Adapter: "fake",
 			}))
@@ -75,7 +76,7 @@ func Test_Cacher(t *testing.T) {
 
 func testAdapter(opt Options) {
 	Convey("Basic operations", func() {
-		m := macaron.New()
+		m := emmanuel.New()
 		m.Use(Cacher(opt))
 
 		m.Get("/", func(c Cache) {
@@ -110,7 +111,7 @@ func testAdapter(opt Options) {
 	})
 
 	Convey("Increase and decrease operations", func() {
-		m := macaron.New()
+		m := emmanuel.New()
 		m.Use(Cacher(opt))
 
 		m.Get("/", func(c Cache) {

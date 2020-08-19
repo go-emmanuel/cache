@@ -25,7 +25,7 @@ import (
 	"github.com/unknwon/com"
 	"gopkg.in/ini.v1"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
 )
 
 var defaultHSetName = []byte("MacaronCache")

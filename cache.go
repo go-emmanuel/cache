@@ -1,5 +1,6 @@
 // Copyright 2013 Beego Authors
 // Copyright 2014 The Macaron Authors
+// Copyright 2020 the Emmanuel developers
 //
 // Licensed under the Apache License, Version 2.0 (the "License"): you may
 // not use this file except in compliance with the License. You may obtain
@@ -13,13 +14,13 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
-// Package cache is a middleware that provides the cache management of Macaron.
+// Package cache is a middleware that provides the cache management of Emmanuel.
 package cache
 
 import (
 	"fmt"
 
-	"gopkg.in/macaron.v1"
+	"github.com/go-emmanuel/emmanuel"
 )
 
 const _VERSION = "0.3.0"
@@ -70,7 +71,7 @@ func prepareOptions(options []Options) Options {
 	if len(opt.Section) == 0 {
 		opt.Section = "cache"
 	}
-	sec := macaron.Config().Section(opt.Section)
+	sec := emmanuel.Config().Section(opt.Section)
 
 	if len(opt.Adapter) == 0 {
 		opt.Adapter = sec.Key("ADAPTER").MustString("memory")
@@ -95,15 +96,15 @@ func NewCacher(name string, opt Options) (Cache, error) {
 	return adapter, adapter.StartAndGC(opt)
 }
 
-// Cacher is a middleware that maps a cache.Cache service into the Macaron handler chain.
+// Cacher is a middleware that maps a cache.Cache service into the Emmanuel handler chain.
 // An single variadic cache.Options struct can be optionally provided to configure.
-func Cacher(options ...Options) macaron.Handler {
+func Cacher(options ...Options) emmanuel.Handler {
 	opt := prepareOptions(options)
 	cache, err := NewCacher(opt.Adapter, opt)
 	if err != nil {
 		panic(err)
 	}
-	return func(ctx *macaron.Context) {
+	return func(ctx *emmanuel.Context) {
 		ctx.Map(cache)
 	}
 }

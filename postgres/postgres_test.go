@@ -21,9 +21,9 @@ import (
 	"time"
 
 	. "github.com/smartystreets/goconvey/convey"
-	"gopkg.in/macaron.v1"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
+	"github.com/go-emmanuel/emmanuel"
 )
 
 func Test_PostgresCacher(t *testing.T) {
@@ -34,7 +34,7 @@ func Test_PostgresCacher(t *testing.T) {
 		}
 
 		Convey("Basic operations", func() {
-			m := macaron.New()
+			m := emmanuel.New()
 			m.Use(cache.Cacher(opt))
 
 			m.Get("/", func(c cache.Cache) {
@@ -68,7 +68,7 @@ func Test_PostgresCacher(t *testing.T) {
 		})
 
 		Convey("Increase and decrease operations", func() {
-			m := macaron.New()
+			m := emmanuel.New()
 			m.Use(cache.Cacher(opt))
 
 			m.Get("/", func(c cache.Cache) {

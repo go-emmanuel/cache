@@ -20,11 +20,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/unknwon/com"
 	. "github.com/smartystreets/goconvey/convey"
-	"gopkg.in/macaron.v1"
+	"github.com/unknwon/com"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
+	"github.com/go-emmanuel/emmanuel"
 )
 
 func Test_LedisCacher(t *testing.T) {
@@ -35,7 +35,7 @@ func Test_LedisCacher(t *testing.T) {
 		}
 
 		Convey("Basic operations", func() {
-			m := macaron.New()
+			m := emmanuel.New()
 			m.Use(cache.Cacher(opt))
 
 			m.Get("/", func(c cache.Cache) {

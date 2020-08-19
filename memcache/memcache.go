@@ -21,7 +21,7 @@ import (
 	"github.com/bradfitz/gomemcache/memcache"
 	"github.com/unknwon/com"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
 )
 
 // MemcacheCacher represents a memcache cache adapter implementation.

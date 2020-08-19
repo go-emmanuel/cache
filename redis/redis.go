@@ -24,7 +24,7 @@ import (
 	"gopkg.in/ini.v1"
 	"gopkg.in/redis.v2"
 
-	"github.com/go-macaron/cache"
+	"github.com/go-emmanuel/cache"
 )
 
 // RedisCacher represents a redis cache adapter implementation.
